@@ -40,3 +40,31 @@ class Cat extends Animal {
     }
 }
 
+
+/*
+* 定义接口, 类实现接口用implements
+* 继承 extends， 实现 implements，
+* */
+
+interface Radio {
+    switchRadio(): void;
+}
+
+interface Battery {
+    checkBatteryStatus(): void;
+}
+
+interface RadioWithBattery extends Radio,Battery {
+    switchRadio(): void;
+}
+class Car implements Radio {
+    switchRadio() {
+    }
+}
+
+class Cellphone implements RadioWithBattery{
+    switchRadio() {
+    }
+    checkBatteryStatus(){
+    }
+}
