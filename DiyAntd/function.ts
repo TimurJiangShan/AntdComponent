@@ -29,3 +29,11 @@ let result = add(1,2,3);
  * */
 
 const addV2: (x: number, y: number, z: number) => number = addDefault;
+const addV3: (x: number, y: number, z: number) => number = addDefault;
+
+
+/*
+*
+*
+*
+* **/
