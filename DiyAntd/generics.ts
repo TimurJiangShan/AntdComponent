@@ -42,6 +42,10 @@ interface IPlus<T> {
     (a: T, b: T) : T;
 }
 
+interface IMultiple<T> {
+    (a: T, b: T) : T;
+}
+
 function plus(a: number, b: number): number {
     return a + b;
 }
@@ -50,5 +54,23 @@ function connect(a:string, b:string): string {
     return a + b;
 }
 
+function multiple(a: number, b: number): number{
+    return a * b;
+}
+
+function stringMulti(a: string, b: string): string{
+    return `${a} * ${b}`;
+}
+
+console.log('--------------------------------');
+
 const a:IPlus<number> = plus;
 const b:IPlus<string> = connect;
+
+const c:IMultiple<number> = multiple;
+const d:IMultiple<string> = stringMulti;
+
+console.log(a(1,1));
+console.log(b("LOVE","LOVE"));
+console.log(c(2,2));
+console.log(d("Cloud", "Cloud"));
