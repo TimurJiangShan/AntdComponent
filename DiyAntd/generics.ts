@@ -2,6 +2,10 @@ function echo<T>(args:T): T {
     return args;
 }
 
+function echo1<T>(args: T): T{
+    return args;
+}
+
 const str = echo(true);
 
 /*
@@ -10,6 +14,10 @@ const str = echo(true);
 * */
 function swap<T,U>(truple:[T,U]):[U,T]{
     return [truple[1], truple[0]];
+}
+
+function swap2<T,U>(triple:[T,U]):[U,T]{
+    return [triple[1], triple[0]];
 }
 
 const result = swap(['string',123]);
@@ -30,6 +38,8 @@ function echoWithLength<T extends IWithLength>(args: T): T {
     console.log(args.length);
     return args;
 }
+
+
 const res1 = echoWithLength({ length: 9 });
 
 
@@ -43,6 +53,10 @@ interface IPlus<T> {
 }
 
 interface IMultiple<T> {
+    (a: T, b: T) : T;
+}
+
+interface IDivide<T>{
     (a: T, b: T) : T;
 }
 
@@ -74,3 +88,33 @@ console.log(a(1,1));
 console.log(b("LOVE","LOVE"));
 console.log(c(2,2));
 console.log(d("Cloud", "Cloud"));
+
+
+// type aliases
+// 联合类型
+type NameResolver = () => string;
+type NameOrResolver = string | NameResolver | number;
+
+function getName(n: NameOrResolver): string{
+    if(typeof n === 'string')
+        return n;
+    else if(typeof  n === 'number')
+        return `${n}`;
+    else
+        return n();
+}
+
+// Type assertion
+// 联合类型里面共有的属性(只能断言成联合类型里面有的类型)
+function getLength(input: string | number): number{
+    if((<string>input).length) {
+        return (<string>input).length;
+    } else {
+        return <number>input;
+    }
+
+}
+
+
+
+
