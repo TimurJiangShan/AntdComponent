@@ -1,5 +1,6 @@
 import React from 'react';
 import Hello from './components/Hello';
+import MouseTracker from "./components/MouseTracker";
 import LikeButton from "./components/LikeButton";
 import logo from './logo.svg';
 import './App.css';
@@ -11,6 +12,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
           <Hello message={"Hello"} />
           <LikeButton />
+          <MouseTracker />
           <a
             className="App-link"
             href="https://reactjs.org"
