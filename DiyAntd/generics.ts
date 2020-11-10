@@ -112,7 +112,6 @@ function getLength(input: string | number): number{
     } else {
         return <number>input;
     }
-
 }
 
 
