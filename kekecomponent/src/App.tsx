@@ -1,13 +1,19 @@
 import React from "react";
 import "./App.css";
-
-import styles from "./css/index.module.less";
+import Button, { ButtonSize, ButtonType } from "./component/Button/button";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className={styles.redTheme}>123</div>
+        <div>123</div>
+        <Button
+          btnType={ButtonType.Link}
+          size={ButtonSize.Large}
+          href="http://www.baidu.com"
+        >
+          click
+        </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
