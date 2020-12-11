@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import useMousePosition from "../hooks/useMousePosition";
+// import useMousePosition from "../hooks/useMousePosition";
 
 
 /*
@@ -14,15 +14,23 @@ const LikeButton:React.FC = () => {
     const [like, setLike] = useState(0);
     const [on, setOn] = useState(true);
     const likeRef = useRef(0);
-
-    const position = useMousePosition();
+    const didUpdate = useRef(false);
+    // const position = useMousePosition();
     useEffect(() => {
         document.title = `Click ${like}`;
-        console.log(like);
-        setTimeout(() => {
-           alert(likeRef.current);
-        }, 3000);
+        // console.log(like);
+        // setTimeout(() => {
+        //    alert(likeRef.current);
+        // }, 3000);
     },[like]);
+
+    useEffect(() => {
+        if (didUpdate.current) {
+            console.log("Did update");
+        } else {
+            didUpdate.current = true;
+        }
+    } );
 
     function handleAlertClick() {
         setTimeout(() => {
@@ -35,7 +43,7 @@ const LikeButton:React.FC = () => {
             <button onClick={() => { setLike(like + 1); likeRef.current++; }}>{like} 👍</button>
             <button onClick={() => setOn(!on)}>{on ? 'On' : 'Off'}</button>
             <button onClick={handleAlertClick}>Alert!</button>
-            <p>X: {position.x}, Y: {position.y}</p>
+            {/*<p>X: {position.x}, Y: {position.y}</p>*/}
         </div>
     )
 }
