@@ -6,6 +6,7 @@ const enum Direction {
 }
 
 
+
 console.log(Direction["UP"]);
 
 /*
