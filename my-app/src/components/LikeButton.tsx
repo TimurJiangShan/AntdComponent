@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef, useContext} from 'react';
 // import useMousePosition from "../hooks/useMousePosition";
-
+import { ThemeContext } from '../App';
 
 /*
 * ref的值，全局只有一个引用
@@ -9,19 +9,24 @@ import React, { useState, useEffect, useRef } from 'react';
 * */
 
 
+
 const LikeButton:React.FC = () => {
     const [obj, setObj] = useState({like: 0, on: true});
     const [like, setLike] = useState(0);
     const [on, setOn] = useState(true);
     const likeRef = useRef(0);
     const didUpdate = useRef(false);
+
+    // 使用context，用useContext
+    const theme = useContext(ThemeContext);
+    const style = {
+        color: theme.color,
+        background: theme.background,
+    }
+
     // const position = useMousePosition();
     useEffect(() => {
         document.title = `Click ${like}`;
-        // console.log(like);
-        // setTimeout(() => {
-        //    alert(likeRef.current);
-        // }, 3000);
     },[like]);
 
     useEffect(() => {
@@ -40,7 +45,7 @@ const LikeButton:React.FC = () => {
 
     return (
         <div>
-            <button onClick={() => { setLike(like + 1); likeRef.current++; }}>{like} 👍</button>
+            <button style={style} onClick={() => { setLike(like + 1); likeRef.current++; }}>{like} 👍</button>
             <button onClick={() => setOn(!on)}>{on ? 'On' : 'Off'}</button>
             <button onClick={handleAlertClick}>Alert!</button>
             {/*<p>X: {position.x}, Y: {position.y}</p>*/}
