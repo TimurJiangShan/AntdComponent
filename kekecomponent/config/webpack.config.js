@@ -60,8 +60,7 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
-const lessRegex = /\.less$/;
-const lessModuleRegex = /\.module\.less$/;
+
 
 
 const hasJsxRuntime = (() => {
@@ -97,7 +96,7 @@ module.exports = function (webpackEnv) {
   const shouldUseReactRefresh = env.raw.FAST_REFRESH;
 
   // common function to get style loaders
-  const getStyleLoaders = (cssOptions, lessOptions, preProcessor) => {
+  const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
@@ -108,10 +107,7 @@ module.exports = function (webpackEnv) {
         loader: require.resolve('css-loader'),
         options: cssOptions,
       },
-      {
-        loader: require.resolve('less-loader'),
-        options: lessOptions,
-      },
+
       {
         // Options for PostCSS as we reference these options twice
         // Adds vendor prefixing based on your specified browser support in
@@ -509,32 +505,8 @@ module.exports = function (webpackEnv) {
               // See https://github.com/webpack/webpack/issues/6571
               sideEffects: true,
             },
-            {
-              test: lessRegex,
-              exclude: lessModuleRegex,
-              use: getStyleLoaders(
-                  {
-                    importLoaders: 1,
-                    sourceMap: isEnvProduction
-                        ? shouldUseSourceMap
-                        : isEnvDevelopment,
-                  },
-                  'less-loader'
-              ),
-              sideEffects: true,
-            },
-            {
-              test: lessModuleRegex,
-              use: getStyleLoaders(
-                  {
-                    importLoaders: 1,
-                    sourceMap: isEnvProduction
-                        ? shouldUseSourceMap
-                        : isEnvDevelopment,
-                    modules:{ getLocalIdent: getCSSModuleLocalIdent}
-                    },
-                  'less-loader')
-            },
+
+
             // Adds support for CSS Modules, but using SASS
             // using the extension .module.scss or .module.sass
             {

@@ -2,15 +2,15 @@ import React from "react";
 import classNames from "classnames";
 
 export enum ButtonSize {
-  Large = "2s.5rem",
-  Small = "1rem",
+  Large = "lg",
+  Small = "sm",
 }
 
 export enum ButtonType {
-  Primary = "#0d6efd",
-  Default = "#6c757d",
-  Danger = "#dc3545",
-  Link = "#c04851",
+  Primary = "primary",
+  Default = "default",
+  Danger = "danger",
+  Link = "link",
 }
 
 interface BaseButtonProps {
