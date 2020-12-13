@@ -61,12 +61,18 @@
   }
 }
 
-@mixin border-right-radius($raduis) {
-  border-top-right-radius: $raduis;
-  border-bottom-right-radius: $raduis;
+@mixin border-right-radius($radius) {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
 }
 
-@mixin border-left-radius($raduis) {
-  border-top-left-radius: $raduis;
-  border-bottom-left-radius: $raduis;
+@mixin border-left-radius($radius) {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin alert-style($background, $border, $color) {
+  color: $color;
+  background: $background;
+  border-color: $border;
 }
