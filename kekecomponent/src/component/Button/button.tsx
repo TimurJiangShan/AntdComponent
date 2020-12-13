@@ -22,11 +22,29 @@ interface BaseButtonProps {
   href?: string;
 }
 
-const Button: React.FC<BaseButtonProps> = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const { disabled, size, btnType, children, href } = props;
+//  不仅想自己加Props，还想获得原生的Button的Props属性， such as onClick
+type NativeButtonProps = BaseButtonProps &
+  React.ButtonHTMLAttributes<HTMLElement>;
 
-  const classes = classNames("btn", {
+type AnchorButtonProps = BaseButtonProps &
+  React.AnchorHTMLAttributes<HTMLElement>;
+
+// Partial 使得里面的属性都变成了可选的
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
+
+const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
+  const {
+    disabled,
+    size,
+    btnType,
+    children,
+    className,
+    href,
+    ...restProps
+  } = props;
+
+  // 假如有用户自定义的className，可以给他添加上去
+  const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
     disabled: btnType === ButtonType.Link && disabled,
@@ -34,14 +52,15 @@ const Button: React.FC<BaseButtonProps> = (props) => {
 
   if (btnType === ButtonType.Link && href) {
     return (
-      <a className={classes} href={href}>
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      <a className={classes} href={href} {...restProps}>
         {children}
       </a>
     );
   }
   return (
-    // eslint-disable-next-line react/button-has-type
-    <button className={classes} disabled={disabled}>
+    // eslint-disable-next-line react/button-has-type,react/jsx-props-no-spreading
+    <button className={classes} disabled={disabled} {...restProps}>
       {children}
     </button>
   );
