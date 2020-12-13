@@ -13,6 +13,7 @@ const App = () => {
           btnType={ButtonType.Primary}
           size={ButtonSize.Large}
           onClick={() => setShow(!show)}
+          disabled
         >
           click
         </Button>

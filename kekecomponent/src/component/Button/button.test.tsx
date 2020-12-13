@@ -66,5 +66,15 @@ describe("test Button", () => {
     expect(element.tagName).toEqual("A");
     expect(element).toHaveClass("btn btn-link");
   });
-  it("should render disabled button when disabled is true", () => {});
+  it("should render disabled button when disabled is true", () => {
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    const wrapper = render(<Button {...disabledProps}>Nice</Button>);
+    const element = wrapper.getByText("Nice") as HTMLButtonElement;
+    expect(element).toBeInTheDocument();
+    expect(element.tagName).toEqual("BUTTON");
+    expect(element).toHaveClass("btn btn-default");
+    expect(element.disabled).toBeTruthy();
+    fireEvent.click(element);
+    expect(defaultProps.onClick).not.toHaveBeenCalled();
+  });
 });
