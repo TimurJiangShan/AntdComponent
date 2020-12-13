@@ -1,7 +1,8 @@
 import React from "react";
+import { Transition } from "react-transition-group";
 import classNames from "classnames";
 
-enum Type {
+export enum Type {
   Success = "success",
   Default = "default",
   Danger = "danger",
@@ -12,14 +13,15 @@ interface BaseAlertProps {
   type?: Type;
   description?: React.ReactNode;
   title?: React.ReactNode;
+  // eslint-disable-next-line react/require-default-props
   onClose?: () => void;
   closable?: boolean;
 }
 
-export const Alert: React.FC<BaseAlertProps> = (props: BaseAlertProps) => {
+const Alert: React.FC<BaseAlertProps> = (props: BaseAlertProps) => {
   const [hide, setHide] = React.useState(false);
 
-  const { type, description, title, onClose, closable, ...restProps } = props;
+  const { type, description, title, onClose, closable } = props;
   const classes = classNames("alert", {
     [`alert-${type}`]: type,
   });
@@ -36,15 +38,25 @@ export const Alert: React.FC<BaseAlertProps> = (props: BaseAlertProps) => {
   };
 
   return (
-    <div className={className}>
-      {title}
-      {description}
-    </div>
+    <Transition in={!hide} timeout={300} animation="zoom-in-top">
+      <div className={classes}>
+        <span className={titleClass}>{title}</span>
+        {description && <p className="alert-desc">{description}</p>}
+        {closable && (
+          <button className="alert-close" onClick={handleClose} type="button">
+            Close
+          </button>
+        )}
+      </div>
+    </Transition>
   );
 };
 
 Alert.defaultProps = {
   type: Type.Default,
-  message: "Alert",
+  title: "Alert",
   description: "This is alert",
+  closable: true,
 };
+
+export default Alert;
