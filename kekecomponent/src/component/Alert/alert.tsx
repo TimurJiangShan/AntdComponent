@@ -22,7 +22,7 @@ interface BaseAlertProps {
   /** 是否显示关闭图标 */
   closable?: boolean;
 }
-
+// 如果后面的props不添加类型，会出现missing props validation
 const Alert: React.FC<BaseAlertProps> = (props: BaseAlertProps) => {
   const [hide, setHide] = React.useState(false);
 
@@ -39,11 +39,17 @@ const Alert: React.FC<BaseAlertProps> = (props: BaseAlertProps) => {
     if (onClose) {
       onClose();
     }
-    setHide(true);
+    setHide(!hide);
   };
 
   return (
-    <Transition in={!hide} timeout={300} animation="zoom-in-top" appear>
+    <Transition
+      in={!hide}
+      timeout={300}
+      animation="zoom-in-top"
+      appear
+      unmountOnExit={false}
+    >
       <div className={classes}>
         <span className={titleClass}>{title}</span>
         {description && <p className="alert-desc">{description}</p>}
