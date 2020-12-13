@@ -10,11 +10,16 @@ export enum Type {
 }
 
 interface BaseAlertProps {
+  /** 类型 四种可选 针对四种不同的场景 */
   type?: Type;
+  /** 描述 */
   description?: React.ReactNode;
+  /** 标题 */
   title?: React.ReactNode;
+  /** 关闭alert时触发的事件 */
   // eslint-disable-next-line react/require-default-props
   onClose?: () => void;
+  /** 是否显示关闭图标 */
   closable?: boolean;
 }
 
@@ -38,7 +43,7 @@ const Alert: React.FC<BaseAlertProps> = (props: BaseAlertProps) => {
   };
 
   return (
-    <Transition in={!hide} timeout={300} animation="zoom-in-top">
+    <Transition in={!hide} timeout={300} animation="zoom-in-top" appear>
       <div className={classes}>
         <span className={titleClass}>{title}</span>
         {description && <p className="alert-desc">{description}</p>}

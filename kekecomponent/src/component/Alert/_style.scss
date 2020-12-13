@@ -16,8 +16,10 @@ $alert-colors:
     top: 0;
     right: 0;
     padding: $alert-padding-y $alert-padding-x;
-    color: inherit;
+    background-color: transparent;
+    color: white;
     cursor: pointer;
+    border: none;
   }
   .bold-title {
     font-weight: $font-weight-bold;
