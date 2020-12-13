@@ -72,8 +72,3 @@ Button.defaultProps = {
 };
 
 export default Button;
-
-/**
- * CSS Selector
- *
- * */
