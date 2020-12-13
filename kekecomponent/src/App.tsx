@@ -6,7 +6,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <div>123</div>
-        <Button btnType={ButtonType.Default} size={ButtonSize.Small}>
+        <Button btnType={ButtonType.Default} size={ButtonSize.Small} disabled>
           click
         </Button>
         <p>
