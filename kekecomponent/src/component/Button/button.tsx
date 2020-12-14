@@ -29,7 +29,7 @@ type NativeButtonProps = BaseButtonProps &
 type AnchorButtonProps = BaseButtonProps &
   React.AnchorHTMLAttributes<HTMLElement>;
 
-// Partial 使得里面的属性都变成了可选的
+// Partial 使得里面的属性都变成了可选的（不必实现里面的所有的属性）
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
