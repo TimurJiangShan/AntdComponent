@@ -11,7 +11,7 @@ export interface MenuProps {
   // ？？？
   style?: CSSProperties;
   // 点击菜单项触发的回调函数
-  onSelect?: () => void;
+  onSelect?: (selectIndex: number) => void;
 }
 
 export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
@@ -23,7 +23,7 @@ export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
   });
 
   return (
-    <ul className={className} style={style}>
+    <ul className={classes} style={style} role="menu">
       <li>1</li>
     </ul>
   );
