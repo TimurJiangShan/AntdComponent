@@ -9,7 +9,7 @@ export enum Type {
   Warning = "warning",
 }
 
-interface BaseAlertProps {
+export interface BaseAlertProps {
   /** 类型 四种可选 针对四种不同的场景 */
   type?: Type;
   /** 描述 */

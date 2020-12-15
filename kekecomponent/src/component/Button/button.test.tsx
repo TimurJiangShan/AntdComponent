@@ -37,7 +37,7 @@ describe("test Button", () => {
     // eslint-disable-next-line react/jsx-props-no-spreading
     const wrapper = render(<Button {...defaultProps}>Nice</Button>);
     /*
-     * 这里记得转换成HTMLButtonElement, 否则后面的.disable 无法使用，因为不转换拿到的是一个HTML元素， 不是一个button
+     * 这里记得转换成HTMLButtonElement, 否则后面的.disable 无法使用，因为不转换的话拿到的是一个HTML元素， 不是一个button
      * */
     const element = wrapper.getByText("Nice") as HTMLButtonElement;
     expect(element).toBeInTheDocument(); // 测试当前元素是否出现在了文档中
