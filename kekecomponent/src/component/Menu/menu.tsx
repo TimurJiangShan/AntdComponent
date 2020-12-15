@@ -14,10 +14,24 @@ export interface MenuProps {
   onSelect?: () => void;
 }
 
-export const Menu: React.FC<MenuProps> = () => {
+export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
+  // children 是什么？？？
+  const { className, defaultIndex, mode, style, onSelect } = props;
+  const classes = classNames("menu", className, {
+    "menu-vertical": mode === "vertical",
+    "menu-horizontal": mode === "horizontal",
+  });
+
   return (
-    <ul>
+    <ul className={className} style={style}>
       <li>1</li>
     </ul>
   );
 };
+
+Menu.defaultProps = {
+  defaultIndex: "0",
+  mode: "horizontal",
+};
+
+export default Menu;
