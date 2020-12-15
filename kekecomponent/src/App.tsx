@@ -1,6 +1,7 @@
 import React from "react";
 import Alert, { Type } from "./component/Alert/alert";
 import Button, { ButtonSize, ButtonType } from "./component/Button/button";
+import { Menu } from "./component/Menu/menu";
 
 const App = () => {
   return (
@@ -11,9 +12,7 @@ const App = () => {
           click
         </Button>
         <Alert type={Type.Success} />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <Menu />
       </header>
     </div>
   );
