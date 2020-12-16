@@ -33,6 +33,7 @@ export const MenuItem: React.FC<MenuItemProps> = (props: MenuItemProps) => {
         onClick={handleClick}
         onKeyDown={() => {}}
         tabIndex={0}
+        className={classes}
         style={{ outline: "none" }}
       >
         {children}

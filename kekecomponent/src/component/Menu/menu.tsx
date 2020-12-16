@@ -54,7 +54,8 @@ export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
   // >. 直接子代组合器
 
   return (
-    <ul className={classes} style={style} role="menu">
+    // 这里给ul加上一个 testId， 就可以在测试的时候取到他了 getByTestId
+    <ul className={classes} style={style} role="menu" data-testid="test-menu">
       <MenuContext.Provider value={passedContext}>
         {children}
       </MenuContext.Provider>
