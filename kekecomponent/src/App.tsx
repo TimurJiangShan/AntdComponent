@@ -12,7 +12,7 @@ const App = () => {
           click
         </Button>
         <Alert type={Type.Success} />
-        <Menu defaultIndex="0">
+        <Menu defaultIndex="0" mode="vertical">
           <MenuItem index="0">cool</MenuItem>
           <MenuItem index="1">Aool</MenuItem>
         </Menu>

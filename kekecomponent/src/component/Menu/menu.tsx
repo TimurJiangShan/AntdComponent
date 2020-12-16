@@ -1,8 +1,8 @@
 import React, { CSSProperties } from "react";
 import classNames from "classnames";
 
-type MenuMode = "horizontal" | "vertical";
-type SelectCallback = (selectIndex: string) => void;
+export type MenuMode = "horizontal" | "vertical";
+export type SelectCallback = (selectIndex: string) => void;
 /*
  * 1. MenuItem应该知道现在active的是哪一项，通过这个值来判断高亮哪个项目
  * 2. 父组件的onSelect应该如何把值传递给子组件
@@ -51,6 +51,7 @@ export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
     "menu-vertical": mode === "vertical",
     "menu-horizontal": mode === "horizontal",
   });
+  // >. 直接子代组合器
 
   return (
     <ul className={classes} style={style} role="menu">
