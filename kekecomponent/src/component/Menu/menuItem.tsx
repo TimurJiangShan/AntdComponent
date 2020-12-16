@@ -27,14 +27,13 @@ export const MenuItem: React.FC<MenuItemProps> = (props: MenuItemProps) => {
 
   // 注意a11y的规则
   return (
-    <li>
+    <li className={classes} style={style}>
       <div
-        className={classes}
-        style={style}
         role="button"
         onClick={handleClick}
         onKeyDown={() => {}}
         tabIndex={0}
+        style={{ outline: "none" }}
       >
         {children}
       </div>

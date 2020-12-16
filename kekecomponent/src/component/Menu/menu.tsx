@@ -26,6 +26,7 @@ interface IMenuContext {
   index: string;
   onSelect?: SelectCallback;
 }
+
 export const MenuContext = React.createContext<IMenuContext>({ index: "0" });
 export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
   // children 是什么？？？
@@ -42,7 +43,7 @@ export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
   };
   // 创建一个传递给子组件的context
   const passedContext: IMenuContext = {
-    index: currentActive || "1",
+    index: currentActive || "0",
     onSelect: handleClick,
   };
 
