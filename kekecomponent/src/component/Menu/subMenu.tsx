@@ -17,6 +17,7 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
   const classes = classNames("menu-item submenu-item", className, {
     "is-active": activeIndex === index,
   });
+  // 注意这里的mode判断是否应该放在Menu里面，然后通过useContext的方式传进来。
   const [menuOpen, setMenuOpen] = React.useState(mode === "vertical");
 
   // 限制children的类型
