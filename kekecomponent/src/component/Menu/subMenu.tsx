@@ -12,13 +12,12 @@ export interface SubMenuProps {
 
 // 横向菜单要设置 submenu-item的position为relative
 const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
-  const [menuOpen, setMenuOpen] = React.useState(false);
-
   const { index, className, title, children } = props;
   const { index: activeIndex, onSelect, mode } = React.useContext(MenuContext);
   const classes = classNames("menu-item submenu-item", className, {
     "is-active": activeIndex === index,
   });
+  const [menuOpen, setMenuOpen] = React.useState(mode === "vertical");
 
   // 限制children的类型
   /**
@@ -29,11 +28,13 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
    * 5. Horizontal 的时候，有hover效果； vertical的时候，是点击效果
    * */
   const renderChildren = () => {
-    const childrenComponent = React.Children.map(children, (child) => {
+    const childrenComponent = React.Children.map(children, (child, i) => {
       const childElement = child as React.FunctionComponentElement<MenuItemProps>;
       const { displayName } = childElement.type;
       if (displayName === "MenuItem") {
-        return childElement;
+        return React.cloneElement(childElement, {
+          index: `${index}-${i}`,
+        });
       }
       return console.log(
         "Warning: the children element should be MenuItem type"
@@ -72,7 +73,6 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
           },
         }
       : {};
-  console.log(mode);
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <li key={index} className={classes} {...hoverEvents}>
