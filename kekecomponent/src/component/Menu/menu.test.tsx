@@ -29,11 +29,9 @@ const generateMenu = (props: MenuProps) => {
       className={className}
       mode={mode}
     >
-      <MenuItem index="0">active</MenuItem>
-      <MenuItem disabled index="1">
-        disabled
-      </MenuItem>
-      <MenuItem index="2">normal</MenuItem>
+      <MenuItem>active</MenuItem>
+      <MenuItem disabled>disabled</MenuItem>
+      <MenuItem>normal</MenuItem>
       <div>123</div>
     </Menu>
   );
