@@ -12,6 +12,8 @@ export interface SubMenuProps {
 
 // 横向菜单要设置 submenu-item的position为relative
 const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
   const { index, className, title, children } = props;
   const { index: activeIndex, onSelect } = React.useContext(MenuContext);
   const classes = classNames("menu-item submenu-item", className, {
@@ -30,12 +32,24 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
         "Warning: the children element should be MenuItem type"
       );
     });
-    return <ul className="submenu">{childrenComponent}</ul>;
+    const subMenuClasses = classNames("submenu", {
+      "menu-opened": menuOpen,
+    });
+    return <ul className={subMenuClasses}>{childrenComponent}</ul>;
   };
 
   return (
     <li key={index} className={classes}>
-      <div className="submenu-title">{title}</div>
+      <div
+        className="submenu-title"
+        onClick={() => setMenuOpen(!menuOpen)}
+        role="button"
+        onKeyDown={() => {}}
+        tabIndex={0}
+        style={{ outline: "transparent" }}
+      >
+        {title}
+      </div>
       {renderChildren()}
     </li>
   );
