@@ -23,7 +23,7 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
   // 限制children的类型
   /**
    * 1. 用CSS类名拼接的方式来 开启和关闭 subMenu的开关（display: none）
-   * 2. 用React.children.map的形式来对子组件进行限制
+   * 2. 用React.children.map的形式来对子组件进行限制（注意返回克隆元素并添加props）
    * 3. 用 displayName 来进行条件判断
    * 4. 如果想在return的 childElement里面加props，就用React.cloneElement
    * 5. Horizontal 的时候，有hover效果； vertical的时候，是点击效果
