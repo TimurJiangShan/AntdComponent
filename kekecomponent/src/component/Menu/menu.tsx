@@ -27,6 +27,7 @@ interface IMenuContext {
   // 当前选择的index
   index: string;
   onSelect?: SelectCallback;
+  mode?: MenuMode;
 }
 
 export const MenuContext = React.createContext<IMenuContext>({ index: "0" });
@@ -47,6 +48,7 @@ const Menu: React.FC<MenuProps> = (props: MenuProps) => {
   const passedContext: IMenuContext = {
     index: currentActive || "0",
     onSelect: handleClick,
+    mode,
   };
 
   const classes = classNames("menu", className, {
