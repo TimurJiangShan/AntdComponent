@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { MenuContext } from "./menu";
 
 export interface MenuItemProps {
-  index: string;
+  index?: string;
   // 选项是否被禁用
   disabled?: boolean;
   className?: string;
@@ -21,7 +21,7 @@ const MenuItem: React.FC<MenuItemProps> = (props: MenuItemProps) => {
   });
 
   const handleClick = () => {
-    if (onSelect && !disabled) {
+    if (onSelect && !disabled && typeof index !== "undefined") {
       onSelect(index);
     }
   };
