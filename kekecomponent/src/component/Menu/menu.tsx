@@ -28,7 +28,7 @@ interface IMenuContext {
 }
 
 export const MenuContext = React.createContext<IMenuContext>({ index: "0" });
-export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
+const Menu: React.FC<MenuProps> = (props: MenuProps) => {
   // children 是什么？？？
   const { className, defaultIndex, mode, style, onSelect, children } = props;
   // 点击MenuItem会切换selected的状态，并且这个状态有且只有一个，所以用state来存储，指示当前active的是哪一个（在menuItem父组件中）
