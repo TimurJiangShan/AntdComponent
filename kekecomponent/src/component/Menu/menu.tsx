@@ -1,5 +1,7 @@
 import React, { CSSProperties } from "react";
 import classNames from "classnames";
+// eslint-disable-next-line import/no-cycle
+import { MenuItemProps } from "./menuItem";
 
 export type MenuMode = "horizontal" | "vertical";
 export type SelectCallback = (selectIndex: string) => void;
@@ -53,11 +55,25 @@ const Menu: React.FC<MenuProps> = (props: MenuProps) => {
   });
   // >. 直接子代组合器
 
+  // 限制children的类型
+  const renderChildren = () => {
+    return React.Children.map(children, (child, index) => {
+      const childElement = child as React.FunctionComponentElement<MenuItemProps>;
+      const { displayName } = childElement.type;
+      if (displayName === "MenuItem") {
+        return React.cloneElement(childElement, { index: `${index}` });
+      }
+      return console.log(
+        "Warning: the children element should be MenuItem type"
+      );
+    });
+  };
+
   return (
     // 这里给ul加上一个 testId， 就可以在测试的时候取到他了 getByTestId
     <ul className={classes} style={style} role="menu" data-testid="test-menu">
       <MenuContext.Provider value={passedContext}>
-        {children}
+        {renderChildren()}
       </MenuContext.Provider>
     </ul>
   );

@@ -1,6 +1,6 @@
 import React from "react";
-import { Menu } from "./component/Menu/menu";
-import { MenuItem } from "./component/Menu/menuItem";
+import Menu from "./component/Menu/menu";
+import MenuItem from "./component/Menu/menuItem";
 import Alert, { Type } from "./component/Alert/alert";
 import Button, { ButtonSize, ButtonType } from "./component/Button/button";
 
@@ -15,6 +15,7 @@ const App = () => {
         <Menu defaultIndex="0" mode="vertical">
           <MenuItem index="0">cool</MenuItem>
           <MenuItem index="1">Aool</MenuItem>
+          <div>123</div>
         </Menu>
       </header>
     </div>

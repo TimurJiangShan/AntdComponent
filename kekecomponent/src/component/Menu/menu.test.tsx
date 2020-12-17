@@ -34,6 +34,7 @@ const generateMenu = (props: MenuProps) => {
         disabled
       </MenuItem>
       <MenuItem index="2">normal</MenuItem>
+      <div>123</div>
     </Menu>
   );
 };

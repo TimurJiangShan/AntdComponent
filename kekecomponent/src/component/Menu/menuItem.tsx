@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+// eslint-disable-next-line import/no-cycle
 import { MenuContext } from "./menu";
 
 export interface MenuItemProps {
