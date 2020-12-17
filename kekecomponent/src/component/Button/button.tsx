@@ -58,6 +58,8 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
       </a>
     );
   }
+
+  // props.children 本质上可以是任何类型，是透明的
   return (
     // eslint-disable-next-line react/button-has-type,react/jsx-props-no-spreading
     <button className={classes} disabled={disabled} {...restProps}>

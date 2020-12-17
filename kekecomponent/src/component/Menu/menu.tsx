@@ -60,7 +60,7 @@ const Menu: React.FC<MenuProps> = (props: MenuProps) => {
     return React.Children.map(children, (child, index) => {
       const childElement = child as React.FunctionComponentElement<MenuItemProps>;
       const { displayName } = childElement.type;
-      if (displayName === "MenuItem") {
+      if (displayName === "MenuItem" || displayName === "SubMenu") {
         /*
          * 以 element 元素为样板克隆并返回新的 React 元素。
          * 返回元素的 props 是将新的 props 与原始元素的 props 浅层合并后的结果。
