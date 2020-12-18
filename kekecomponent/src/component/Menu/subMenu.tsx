@@ -13,12 +13,25 @@ export interface SubMenuProps {
 // 横向菜单要设置 submenu-item的position为relative
 const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
   const { index, className, title, children } = props;
-  const { index: activeIndex, onSelect, mode } = React.useContext(MenuContext);
+  const {
+    index: activeIndex,
+    onSelect,
+    mode,
+    defaultOpenSubMenus,
+  } = React.useContext(MenuContext);
   const classes = classNames("menu-item submenu-item", className, {
     "is-active": activeIndex === index,
   });
+
+  // defaultOpenSubMenus 有可能是undefined。
+  const openSubMenus = defaultOpenSubMenus as Array<string>;
+  const openMenus =
+    index && mode === "vertical" ? openSubMenus?.includes(index) : false;
+
+  console.log(`openSubMenus: ${openSubMenus}`);
+  console.log(`index: ${index}`);
   // 注意这里的mode判断是否应该放在Menu里面，然后通过useContext的方式传进来。
-  const [menuOpen, setMenuOpen] = React.useState(mode === "vertical");
+  const [menuOpen, setMenuOpen] = React.useState(openMenus);
 
   // 限制children的类型
   /**
@@ -34,6 +47,7 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
       const { displayName } = childElement.type;
       if (displayName === "MenuItem") {
         return React.cloneElement(childElement, {
+          // 用这种 index里面套index的形式，实现SubMenu组件也能active的功能
           index: `${index}-${i}`,
         });
       }
@@ -48,11 +62,11 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
   };
 
   let timer: any;
-  const handleMouse = (e: React.MouseEvent, toogle: boolean) => {
+  const handleMouse = (e: React.MouseEvent, toggle: boolean) => {
     clearTimeout(timer);
     e.preventDefault();
     timer = setTimeout(() => {
-      setMenuOpen(toogle);
+      setMenuOpen(toggle);
     }, 300);
   };
   const clickEvents =
@@ -74,6 +88,8 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
           },
         }
       : {};
+
+  console.log(openMenus);
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <li key={index} className={classes} {...hoverEvents}>

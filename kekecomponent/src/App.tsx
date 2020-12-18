@@ -13,7 +13,7 @@ const App = () => {
           click
         </Button>
         <Alert type={Type.Success} />
-        <Menu defaultIndex="0" mode="horizontal">
+        <Menu defaultIndex="0" mode="vertical" defaultOpenSubMenus={["2"]}>
           <MenuItem>cool</MenuItem>
           <MenuItem>Aool</MenuItem>
           <SubMenu title="Title">

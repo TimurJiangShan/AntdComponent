@@ -21,6 +21,7 @@ export interface MenuProps {
   // 点击菜单项触发的回调函数
   onSelect?: SelectCallback;
   children?: React.ReactNode;
+  defaultOpenSubMenus?: Array<string>;
 }
 
 interface IMenuContext {
@@ -28,12 +29,21 @@ interface IMenuContext {
   index: string;
   onSelect?: SelectCallback;
   mode?: MenuMode;
+  defaultOpenSubMenus?: Array<string>;
 }
 
 export const MenuContext = React.createContext<IMenuContext>({ index: "0" });
 const Menu: React.FC<MenuProps> = (props: MenuProps) => {
   // children 是什么？？？
-  const { className, defaultIndex, mode, style, onSelect, children } = props;
+  const {
+    className,
+    defaultIndex,
+    mode,
+    style,
+    onSelect,
+    children,
+    defaultOpenSubMenus,
+  } = props;
   // 点击MenuItem会切换selected的状态，并且这个状态有且只有一个，所以用state来存储，指示当前active的是哪一个（在menuItem父组件中）
   const [currentActive, setCurrentActive] = React.useState(defaultIndex);
   const handleClick = (index: string) => {
@@ -49,6 +59,7 @@ const Menu: React.FC<MenuProps> = (props: MenuProps) => {
     index: currentActive || "0",
     onSelect: handleClick,
     mode,
+    defaultOpenSubMenus,
   };
 
   const classes = classNames("menu", className, {
@@ -89,6 +100,7 @@ const Menu: React.FC<MenuProps> = (props: MenuProps) => {
 Menu.defaultProps = {
   defaultIndex: "0",
   mode: "horizontal",
+  defaultOpenSubMenus: [],
 };
 
 export default Menu;
