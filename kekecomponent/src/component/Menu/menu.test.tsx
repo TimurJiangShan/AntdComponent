@@ -103,6 +103,8 @@ describe("test Menu and MenuItem component", () => {
     expect(verticalElement).toBeInTheDocument();
     expect(menuContainer).toHaveClass("menu-vertical");
   });
+
+  // 注意这里是异步的
   it("should show dropdown menus when hover on subMenu", async () => {
     expect(subMenuElement).toBeInTheDocument();
     expect(wrapper.getByTestId("test-submenu")).toHaveClass("submenu");
