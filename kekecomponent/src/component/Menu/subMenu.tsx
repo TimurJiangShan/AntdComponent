@@ -28,8 +28,6 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
   const openMenus =
     index && mode === "vertical" ? openSubMenus?.includes(index) : false;
 
-  console.log(`openSubMenus: ${openSubMenus}`);
-  console.log(`index: ${index}`);
   // 注意这里的mode判断是否应该放在Menu里面，然后通过useContext的方式传进来。
   const [menuOpen, setMenuOpen] = React.useState(openMenus);
 
@@ -58,7 +56,11 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
     const subMenuClasses = classNames("submenu", {
       "menu-opened": menuOpen,
     });
-    return <ul className={subMenuClasses}>{childrenComponent}</ul>;
+    return (
+      <ul className={subMenuClasses} data-testid="test-submenu">
+        {childrenComponent}
+      </ul>
+    );
   };
 
   let timer: any;
@@ -89,10 +91,13 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
         }
       : {};
 
-  console.log(openMenus);
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <li key={index} className={classes} {...hoverEvents}>
+    <li
+      key={index}
+      className={classes}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...hoverEvents}
+    >
       <div
         className="submenu-title"
         role="button"

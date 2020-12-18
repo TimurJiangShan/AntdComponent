@@ -28,17 +28,9 @@ const MenuItem: React.FC<MenuItemProps> = (props: MenuItemProps) => {
 
   // 注意a11y的规则
   return (
-    <li className={classes} style={style}>
-      <div
-        role="button"
-        onClick={handleClick}
-        onKeyDown={() => {}}
-        tabIndex={0}
-        className={classes}
-        style={{ outline: "none" }}
-      >
-        {children}
-      </div>
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/click-events-have-key-events
+    <li className={classes} style={style} onClick={handleClick}>
+      {children}
     </li>
   );
 };
