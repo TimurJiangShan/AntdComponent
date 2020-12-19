@@ -12,7 +12,7 @@ import classNames from "classnames";
 
 export interface TabsItemProps {
   label: string | React.ReactElement;
-  disabled: boolean;
+  disabled?: boolean;
   children?: React.ReactNode;
 }
 

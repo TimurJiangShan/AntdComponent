@@ -2,7 +2,7 @@ import React, { CSSProperties, FunctionComponentElement } from "react";
 import classNames from "classnames";
 import { TabsItemProps } from "./tabsItem";
 
-interface TabsProps {
+export interface TabsProps {
   /** 当前激活 tab 面板的 index，默认为0 */
   defaultIndex?: string;
   /** 可以扩展的 className */
@@ -72,7 +72,7 @@ const Tabs: React.FC<TabsProps> = (props: TabsProps) => {
     });
   };
   return (
-    <div className={`tabs ${className}`}>
+    <div className={`tabs ${className}`} data-testid="test-tabs">
       <ul className={navClass}>{renderNavLinks()}</ul>
       <div className="tabs-content">{renderContent()}</div>
     </div>
