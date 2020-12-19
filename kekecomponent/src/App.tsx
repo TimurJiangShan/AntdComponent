@@ -5,6 +5,7 @@ import SubMenu from "./component/Menu/subMenu";
 import Alert, { Type } from "./component/Alert/alert";
 import Button, { ButtonSize, ButtonType } from "./component/Button/button";
 import Tabs from "./component/Tabs/tabs";
+import TabsItem from "./component/Tabs/tabsItem";
 
 const App = () => {
   return (
@@ -23,7 +24,11 @@ const App = () => {
           </SubMenu>
           <div>123</div>
         </Menu>
-        <Tabs>1 </Tabs>
+        <Tabs>
+          <TabsItem disabled={false} label="Label-1">
+            123
+          </TabsItem>
+        </Tabs>
       </header>
     </div>
   );

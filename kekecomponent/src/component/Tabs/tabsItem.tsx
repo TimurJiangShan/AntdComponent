@@ -11,14 +11,20 @@ import classNames from "classnames";
  * */
 
 export interface TabsItemProps {
-  label?: string | React.ReactElement;
+  label: string | React.ReactElement;
   disabled: boolean;
   children?: React.ReactNode;
 }
 
 const TabsItem: React.FC<TabsItemProps> = (props: TabsItemProps) => {
-  const { label, disabled, children } = props;
+  const { children } = props;
   return <div className="tab-panel">{children}</div>;
+};
+
+TabsItem.defaultProps = {
+  label: "Label",
+  disabled: false,
+  children: () => <li />,
 };
 
 export default TabsItem;

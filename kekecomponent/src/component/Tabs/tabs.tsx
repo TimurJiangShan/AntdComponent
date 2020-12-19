@@ -37,7 +37,8 @@ const Tabs: React.FC<TabsProps> = (props: TabsProps) => {
   const renderNavLinks = () => {
     return React.Children.map(children, (child, index) => {
       const childElement = child as FunctionComponentElement<TabsItemProps>;
-      const { label, disabled } = childElement.props;
+      // 这里防止不能destructing
+      const { label, disabled } = childElement.props || {};
       const classes = classNames("tabs-nav-item", {
         "is-active": activeIndex === `${index}`,
         disabled,
@@ -83,6 +84,9 @@ const Tabs: React.FC<TabsProps> = (props: TabsProps) => {
 Tabs.defaultProps = {
   defaultIndex: "0",
   type: "line",
+  className: "",
+  onSelect: (selectedIndex) => {},
+  children: () => <></>,
 };
 
 export default Tabs;
