@@ -4,6 +4,7 @@ import MenuItem from "./component/Menu/menuItem";
 import SubMenu from "./component/Menu/subMenu";
 import Alert, { Type } from "./component/Alert/alert";
 import Button, { ButtonSize, ButtonType } from "./component/Button/button";
+import Tabs from "./component/Tabs/tabs";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           </SubMenu>
           <div>123</div>
         </Menu>
+        <Tabs>1 </Tabs>
       </header>
     </div>
   );
