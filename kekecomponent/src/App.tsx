@@ -28,6 +28,9 @@ const App = () => {
           <TabsItem disabled={false} label="Label-1">
             123
           </TabsItem>
+          <TabsItem disabled={false} label="Label-2">
+            567
+          </TabsItem>
         </Tabs>
       </header>
     </div>

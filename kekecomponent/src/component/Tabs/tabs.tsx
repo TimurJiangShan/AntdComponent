@@ -45,7 +45,7 @@ const Tabs: React.FC<TabsProps> = (props: TabsProps) => {
       });
       const key = `nav-item-${index}`;
       return (
-        <li className={classes} key={key}>
+        <li key={key}>
           <div
             className={classes}
             role="button"
@@ -73,9 +73,7 @@ const Tabs: React.FC<TabsProps> = (props: TabsProps) => {
   };
   return (
     <div className={`tabs ${className}`}>
-      <ul className={navClass}>
-        <li>{renderNavLinks()}</li>
-      </ul>
+      <ul className={navClass}>{renderNavLinks()}</ul>
       <div className="tabs-content">{renderContent()}</div>
     </div>
   );
