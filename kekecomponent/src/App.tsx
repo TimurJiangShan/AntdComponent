@@ -24,12 +24,15 @@ const App = () => {
           </SubMenu>
           <div>123</div>
         </Menu>
-        <Tabs>
+        <Tabs type="card">
           <TabsItem disabled={false} label="Label-1">
             123
           </TabsItem>
           <TabsItem disabled={false} label="Label-2">
             567
+          </TabsItem>
+          <TabsItem disabled={false} label="Label-2">
+            8910
           </TabsItem>
         </Tabs>
       </header>
