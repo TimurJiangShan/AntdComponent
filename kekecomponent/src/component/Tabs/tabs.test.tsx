@@ -34,7 +34,10 @@ describe("Test Tabs and TabsItem", () => {
     wrapper = render(generateTabs(defaultTabsProps));
     tabsElement = wrapper.getByTestId("test-tabs");
   });
-  it("should render tabs and tabsitem with default props", () => {
+  it("should render card types when the props change", () => {
+    expect(tabsElement).toBeInTheDocument();
+  });
+  it("should render", () => {
     expect(tabsElement).toBeInTheDocument();
   });
 });
