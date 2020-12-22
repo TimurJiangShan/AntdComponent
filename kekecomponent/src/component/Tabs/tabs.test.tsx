@@ -13,15 +13,21 @@ const defaultTabsProps: TabsProps = {
   defaultIndex: "1",
   className: "test",
   type: "line",
+  onSelect: jest.fn(),
 };
 
 const generateTabs = (props: TabsProps) => {
-  const { defaultIndex, className, type } = props;
+  const { defaultIndex, className, type, onSelect } = props;
   return (
-    <Tabs type={type} defaultIndex={defaultIndex} className={className}>
-      <TabsItem label="tab1">active</TabsItem>
-      <TabsItem label="tab2">disabled</TabsItem>
-      <TabsItem label="tab3">normal</TabsItem>
+    <Tabs
+      type={type}
+      defaultIndex={defaultIndex}
+      className={className}
+      onSelect={onSelect}
+    >
+      <TabsItem label="tab1">content1</TabsItem>
+      <TabsItem label="tab2">content2</TabsItem>
+      <TabsItem label="tab3">content3</TabsItem>
       <div>123</div>
     </Tabs>
   );
@@ -34,10 +40,20 @@ describe("Test Tabs and TabsItem", () => {
     wrapper = render(generateTabs(defaultTabsProps));
     tabsElement = wrapper.getByTestId("test-tabs");
   });
-  it("should render card types when the props change", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+  it("click tabItem should switch to content'", () => {
     expect(tabsElement).toBeInTheDocument();
   });
   it("should render", () => {
-    expect(tabsElement).toBeInTheDocument();
+    const { queryByText, getByText } = wrapper;
+    const clickedElement = getByText("tab1");
+    fireEvent.click(clickedElement);
+    expect(clickedElement).toHaveClass("is-active");
+    expect(queryByText("tab2")).not.toHaveClass("is-active");
+    expect(queryByText("content1")).toBeInTheDocument();
+    expect(queryByText("content2")).not.toBeInTheDocument();
+    expect(defaultTabsProps.onSelect).toHaveBeenCalledWith("0");
   });
 });
