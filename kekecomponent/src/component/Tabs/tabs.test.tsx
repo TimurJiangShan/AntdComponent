@@ -56,4 +56,6 @@ describe("Test Tabs and TabsItem", () => {
     expect(queryByText("content2")).not.toBeInTheDocument();
     expect(defaultTabsProps.onSelect).toHaveBeenCalledWith("0");
   });
+  // eslint-disable-next-line jest/expect-expect
+  it("should render necessary", () => {});
 });
