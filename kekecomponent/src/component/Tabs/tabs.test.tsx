@@ -43,7 +43,15 @@ describe("Test Tabs and TabsItem", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
-  it("click tabItem should switch to content'", () => {
+  it("click render the correct default Tabs", () => {
+    const { queryByText, container } = wrapper;
+    expect(container.querySelector(".tabs-nav")).toHaveClass("nav-line");
+    const activeElement = queryByText("tab2");
+    expect(activeElement).toBeInTheDocument();
+    expect(activeElement).toHaveClass("is-active");
+    expect(queryByText("tab1")).not.toHaveClass("is-active");
+    expect(queryByText("content2")).toBeInTheDocument();
+    expect(queryByText("content1")).not.toBeInTheDocument();
     expect(tabsElement).toBeInTheDocument();
   });
   it("should render", () => {
