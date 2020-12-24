@@ -9,6 +9,8 @@ import {
 import TabsItem from "./tabsItem";
 import Tabs, { TabsProps } from "./tabs";
 
+// query* functions will return the element or null if it cannot be found
+// get* functions will return the element or throw an error if it cannot be found
 const defaultTabsProps: TabsProps = {
   defaultIndex: "1",
   className: "test",
@@ -27,7 +29,9 @@ const generateTabs = (props: TabsProps) => {
     >
       <TabsItem label="tab1">content1</TabsItem>
       <TabsItem label="tab2">content2</TabsItem>
-      <TabsItem label="tab3">content3</TabsItem>
+      <TabsItem label="tab3" disabled>
+        content3
+      </TabsItem>
       <div>123</div>
     </Tabs>
   );
@@ -54,7 +58,7 @@ describe("Test Tabs and TabsItem", () => {
     expect(queryByText("content1")).not.toBeInTheDocument();
     expect(tabsElement).toBeInTheDocument();
   });
-  it("should render", () => {
+  it("click tabItem should switch to content", () => {
     const { queryByText, getByText } = wrapper;
     const clickedElement = getByText("tab1");
     fireEvent.click(clickedElement);
@@ -64,6 +68,12 @@ describe("Test Tabs and TabsItem", () => {
     expect(queryByText("content2")).not.toBeInTheDocument();
     expect(defaultTabsProps.onSelect).toHaveBeenCalledWith("0");
   });
-  // eslint-disable-next-line jest/expect-expect
-  it("should render necessary", () => {});
+  it("click disabled tabItem should not work", () => {
+    const { getByText } = wrapper;
+    const disableElement = getByText("tab3");
+    expect(disableElement).toHaveClass("disabled");
+    fireEvent.click(disableElement);
+    expect(disableElement).not.toHaveClass("active");
+    expect(defaultTabsProps.onSelect).not.toHaveBeenCalled();
+  });
 });
