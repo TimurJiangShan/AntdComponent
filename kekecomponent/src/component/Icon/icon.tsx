@@ -12,16 +12,32 @@ export type ThemeProps =
   | "secondary"
   | "success"
   | "info"
-  | "warning";
+  | "warning"
+  | "danger";
 
 interface IconProps {
   theme?: ThemeProps;
   className?: string;
   icon: IconName;
+  size?:
+    | "xs"
+    | "lg"
+    | "sm"
+    | "1x"
+    | "2x"
+    | "3x"
+    | "4x"
+    | "5x"
+    | "6x"
+    | "7x"
+    | "8x"
+    | "9x"
+    | "10x"
+    | undefined;
 }
 
 const Icon: React.FC<IconProps> = (props: IconProps) => {
-  const { className, theme, icon, ...restProps } = props;
+  const { className, theme, icon, size, ...restProps } = props;
   const classes = classNames("icon", className, {
     [`icon-${theme}`]: theme,
   });
@@ -29,6 +45,7 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
     <FontAwesomeIcon
       icon={icon as IconName}
       className={classes}
+      size={size}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...restProps}
     />
@@ -38,6 +55,7 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
 Icon.defaultProps = {
   theme: "primary",
   className: "",
+  size: "1x",
 };
 
 export default Icon;

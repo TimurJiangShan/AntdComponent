@@ -41,7 +41,7 @@ const App = () => {
             8910
           </TabsItem>
         </Tabs>
-        <Icon icon="coffee" />
+        <Icon icon="coffee" theme="danger" size="10x" />
       </header>
     </div>
   );
