@@ -1,4 +1,7 @@
 import React from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 import Menu from "./component/Menu/menu";
 import MenuItem from "./component/Menu/menuItem";
 import SubMenu from "./component/Menu/subMenu";
@@ -6,6 +9,9 @@ import Alert, { Type } from "./component/Alert/alert";
 import Button, { ButtonSize, ButtonType } from "./component/Button/button";
 import Tabs from "./component/Tabs/tabs";
 import TabsItem from "./component/Tabs/tabsItem";
+import Icon from "./component/Icon/icon";
+
+library.add(fas, fab);
 
 const App = () => {
   return (
@@ -35,6 +41,7 @@ const App = () => {
             8910
           </TabsItem>
         </Tabs>
+        <Icon icon="coffee" />
       </header>
     </div>
   );
