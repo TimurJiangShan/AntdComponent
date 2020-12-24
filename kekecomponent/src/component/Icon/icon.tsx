@@ -15,25 +15,27 @@ export type ThemeProps =
   | "warning"
   | "danger";
 
+export type SizeProps =
+  | "xs"
+  | "lg"
+  | "sm"
+  | "1x"
+  | "2x"
+  | "3x"
+  | "4x"
+  | "5x"
+  | "6x"
+  | "7x"
+  | "8x"
+  | "9x"
+  | "10x"
+  | undefined;
+
 interface IconProps {
   theme?: ThemeProps;
   className?: string;
   icon: IconName;
-  size?:
-    | "xs"
-    | "lg"
-    | "sm"
-    | "1x"
-    | "2x"
-    | "3x"
-    | "4x"
-    | "5x"
-    | "6x"
-    | "7x"
-    | "8x"
-    | "9x"
-    | "10x"
-    | undefined;
+  size?: SizeProps;
 }
 
 const Icon: React.FC<IconProps> = (props: IconProps) => {
