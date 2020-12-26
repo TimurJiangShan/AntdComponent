@@ -1,7 +1,9 @@
 import React, { CSSProperties } from "react";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp, library, IconName } from "@fortawesome/fontawesome-svg-core";
+import { library, IconName } from "@fortawesome/fontawesome-svg-core";
+
+// 使用 fas，fab，相当于把所有的都给引用进来了，然后可以不加'fas，fab' 前缀
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 
@@ -57,7 +59,7 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
 Icon.defaultProps = {
   theme: "primary",
   className: "",
-  size: "1x",
+  size: "2x",
 };
 
 export default Icon;
