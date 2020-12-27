@@ -40,6 +40,8 @@ interface IconProps {
   size?: SizeProps;
 }
 
+// transition 属性不能继承，必须精确的添加到想要的类上
+
 const Icon: React.FC<IconProps> = (props: IconProps) => {
   const { className, theme, icon, size, ...restProps } = props;
   const classes = classNames("icon", className, {
