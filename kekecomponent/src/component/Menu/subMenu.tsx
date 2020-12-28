@@ -1,6 +1,7 @@
 import React, { CSSProperties } from "react";
 import classNames from "classnames";
 import MenuItem, { MenuItemProps } from "component/Menu/menuItem";
+import { CSSTransition } from "react-transition-group";
 import Icon from "../Icon/icon";
 import Menu, { MenuContext } from "./menu";
 
@@ -14,10 +15,11 @@ export interface SubMenuProps {
 // 当display从none转化成block的时候，其他的动画效果就会完全失效。 因为display不是一个标准的支持animate的属性，所以transition就不起作用
 // display和opacity: 1是同时生效的，自然就缺少了变化
 /*
+  transition 属性不能继承，必须精确的添加到想要的类上
  * 把display: none 注释掉会有动画效果，但是这样opacity仍然占据了空间，不是一个很好的解决方案
  * 采用延时，让display和opacity不同时生效：
  * 1. （渐隐）display: none ==> display: block; opacity: 0; ==> display: block; opacity: 1;
- * 2. display: block; opacity: 1 ==> display: block; opacity: 0; ==> display: none;
+ * 2.  display: block; opacity: 1 ==> display: block; opacity: 0; ==> display: none;
  * */
 
 // 横向菜单要设置 submenu-item的position为relative
@@ -68,9 +70,16 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
       "menu-opened": menuOpen,
     });
     return (
-      <ul className={subMenuClasses} data-testid="test-submenu">
-        {childrenComponent}
-      </ul>
+      <CSSTransition
+        in={menuOpen}
+        timeout={300}
+        classNames="zoom-in-top"
+        appear
+      >
+        <ul className={subMenuClasses} data-testid="test-submenu">
+          {childrenComponent}
+        </ul>
+      </CSSTransition>
     );
   };
 
