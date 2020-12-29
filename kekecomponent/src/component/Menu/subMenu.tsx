@@ -33,7 +33,7 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
   } = React.useContext(MenuContext);
   // 注意这里的mode判断是否应该放在Menu里面，然后通过useContext的方式传进来。
 
-  // defaultOpenSubMenus 有可能是undefined。
+  // defaultOpenSubMenus 有可能是undefined。所以进行判断
   const openSubMenus = defaultOpenSubMenus as Array<string>;
   const openMenus =
     index && mode === "vertical" ? openSubMenus?.includes(index) : false;
