@@ -12,6 +12,10 @@ export interface SubMenuProps {
   children: React.ReactNode;
 }
 
+/*
+ * TransitionGroup没有TypeScript定义，所以需要自己安装@type/
+ * */
+
 // 当display从none转化成block的时候，其他的动画效果就会完全失效。 因为display不是一个标准的支持animate的属性，所以transition就不起作用
 // display和opacity: 1是同时生效的，自然就缺少了变化
 /*
@@ -75,6 +79,7 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
         timeout={300}
         classNames="zoom-in-top"
         appear
+        unmountOnExit
       >
         <ul className={subMenuClasses} data-testid="test-submenu">
           {childrenComponent}
