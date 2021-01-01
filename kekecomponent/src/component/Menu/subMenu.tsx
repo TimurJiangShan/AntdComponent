@@ -132,7 +132,7 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
         onClick={clickEvents}
       >
         {title}
-        <Icon icon="arrow-down" className="arrow-icon" />
+        <Icon icon="arrow-down" className="arrow-icon" size="sm" />
       </div>
       {renderChildren()}
     </li>
