@@ -14,14 +14,14 @@ const disabledProps: ButtonProps = {
 };
 
 const testProps: ButtonProps = {
-  btnType: ButtonType.Primary,
-  size: ButtonSize.Large,
+  btnType: "primary",
+  size: "lg",
   className: "class",
 };
 
 const testLinkProps: ButtonProps = {
-  btnType: ButtonType.Link,
-  size: ButtonSize.Large,
+  btnType: "link",
+  size: "lg",
   className: "class",
   href: "www.baidu.com",
 };
