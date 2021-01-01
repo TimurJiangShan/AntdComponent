@@ -6,7 +6,7 @@ import Menu from "./component/Menu/menu";
 import MenuItem from "./component/Menu/menuItem";
 import SubMenu from "./component/Menu/subMenu";
 import Alert, { Type } from "./component/Alert/alert";
-import Button, { ButtonSize, ButtonType } from "./component/Button/button";
+import Button from "./component/Button/button";
 import Tabs from "./component/Tabs/tabs";
 import TabsItem from "./component/Tabs/tabsItem";
 import Icon from "./component/Icon/icon";
@@ -17,7 +17,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Large} disabled>
+        <Button btnType="primary" size="lg" disabled>
           click
         </Button>
         <Alert type={Type.Success} />

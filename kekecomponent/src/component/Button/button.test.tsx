@@ -1,6 +1,6 @@
 import React from "react";
 import { fireEvent, render } from "@testing-library/react";
-import Button, { ButtonProps, ButtonSize, ButtonType } from "./button";
+import Button, { ButtonProps } from "./button";
 
 // 用 jest.fn() 来创建一个被监控的模拟函数
 // 用 Firing Event里面的fireEvent 来触发不同的用户事件
