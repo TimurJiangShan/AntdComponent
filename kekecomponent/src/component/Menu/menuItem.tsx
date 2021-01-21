@@ -26,7 +26,7 @@ const MenuItem: React.FC<MenuItemProps> = (props: MenuItemProps) => {
     }
   };
 
-  // 注意a11y的规则
+  // 注意a11y的规则， 适当的时候可以取消
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/click-events-have-key-events
     <li className={classes} style={style} onClick={handleClick}>
