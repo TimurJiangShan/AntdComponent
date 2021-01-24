@@ -115,7 +115,10 @@ const SubMenu: React.FC<SubMenuProps> = (props: SubMenuProps) => {
           },
         }
       : {};
-
+        /*
+         * 1. （渐隐）display: none ==> display: block; opacity: 0; ==> display: block; opacity: 1;
+        * 2.  display: block; opacity: 1 ==> display: block; opacity: 0; ==> display: none;
+        */
   return (
     <li
       key={index}
