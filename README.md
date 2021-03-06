@@ -1,1 +1,1 @@
-# Antd DIY Component
+# Antd Component
